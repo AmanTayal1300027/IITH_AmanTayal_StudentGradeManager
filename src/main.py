@@ -13,9 +13,14 @@ import csv
 import os
 from tabulate import tabulate
 
-#sets the CSV file directory to the same PATH as the python script
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-FILENAME = os.path.join(SCRIPT_DIR, "students.csv")
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # one level up from /src
+ASSETS_DIR = os.path.join(ROOT_DIR, "assets", "other-assets")
+FILENAME = os.path.join(ASSETS_DIR, "students.csv")
+
+HEADERS = ["ID", "Name", "Grade"]
+
+# Ensure assets/other-assets exists
+os.makedirs(ASSETS_DIR, exist_ok=True)
 
 #returns true if file exists
 file_exists = os.path.exists(FILENAME)
